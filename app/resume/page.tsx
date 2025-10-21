@@ -130,7 +130,7 @@ export default function ResumePage() {
 
         {/* Light footer note for recruiters */}
         <Box sx={{ mt: 4, color: 'text.secondary', fontSize: 13, '@media print': { display: 'none' } }}>
-          Last updated: Oct 2025 • Also available for C2C engagements — see <Link href="/how-i-work">How I Work</Link>
+          Last updated: Oct 2025 
         </Box>
       </Container>
 

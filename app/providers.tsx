@@ -1,26 +1,18 @@
+// app/posthog.client.tsx
 'use client';
 
-import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
-import { ReactNode, useEffect } from 'react';
-import { initPosthog } from '@/lib/track';
+import { useEffect } from 'react';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
 
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: { main: '#1f4adb' },
-    secondary: { main: '#111827' }
-  },
-  shape: { borderRadius: 14 }
-});
-
-export default function Providers({ children }: { children: ReactNode }) {
+export default function PostHogClientProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    initPosthog(); // safe no-op if already initialized
+    // Only runs in the browser
+    if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) return;
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+    });
   }, []);
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
-  );
+
+  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
 }

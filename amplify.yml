@@ -1,0 +1,33 @@
+version: 2
+env:
+  variables:
+    NODE_ENV: test
+    APP_ENV: test
+frontend:
+  phases:
+    preBuild:
+      commands: 
+        - export NODE_OPTIONS="--max-old-space-size=12288"
+        - export NEXT_DISABLE_TYPE_CHECKING=true
+        - npm install -g yarn@1.22.19
+        - yarn --version  # sanity check
+        - yarn install --frozen-lockfile --production=false
+    build:
+      commands:
+        - '[ -f .env ] && (echo "✅ .env file found:" && cat .env && cat .env >> .env.production) || echo "❌ .env file not found."'
+        - env | grep -e NODE_ENV -e ENV -e APP_ENV -e REGION -e FRONTEND_SECRET_NAME | tee -a .env.production | grep . || echo "Some env vars not found - row 1"
+        - env | grep -e IN_CLOUD  | tee -a .env.production | grep . || echo "Some env vars not found - row 3"
+        - env | grep -e SUPPORT_EMAIL_ADDRESS -e CUSTOM_EMAIL_TOKEN_ID -e API_FUNCTION_NAME | tee -a .env.production | grep . || echo "Some env vars not found - row 4"
+        - env | grep -e NEXT_PUBLIC_ | tee -a .env.production | grep . || echo "Some env vars not found - row 5"
+        - yarn run build
+        - rm -rf node_modules
+        - yarn install --frozen-lockfile --production=true #npm install --omit=dev #--legacy-peer-deps
+          
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
+      - node_modules/**/*

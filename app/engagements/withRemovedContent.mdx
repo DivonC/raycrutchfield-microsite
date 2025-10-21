@@ -1,7 +1,24 @@
+
 import { Box, Container, Stack, Typography, Chip, Link as MLink, Card, CardContent, CardHeader, Divider, Grid } from '@mui/material';
 import TrackedButton from '@/components/TrackedButton';
 import Prose from '@/components/Prose';
 import MDXClient from '@/components/MDXClient';
+
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+      'max-snippet': 0,
+      'max-image-preview': 'none',
+      'max-video-preview': 0,
+    },
+  },
+};
+
 
 <Prose>
   <MDXClient>

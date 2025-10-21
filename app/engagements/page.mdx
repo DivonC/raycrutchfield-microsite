@@ -1,0 +1,122 @@
+
+import { Box, Container, Stack, Typography, Chip, Link as MLink, Card, CardContent, CardHeader, Divider, Grid } from '@mui/material';
+import TrackedButton from '@/components/TrackedButton';
+import Prose from '@/components/Prose';
+import MDXClient from '@/components/MDXClient';
+
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+      'max-snippet': 0,
+      'max-image-preview': 'none',
+      'max-video-preview': 0,
+    },
+  },
+};
+
+
+<Prose>
+  <MDXClient>
+
+    
+
+    {/* Commercials section (content unchanged) */}
+    <section id="working-with-me" className="prose max-w-3xl mx-auto">
+      <h2>Engagement Models & Terms</h2>
+      <Typography>
+        I help teams ship AWS serverless, data / automation platforms, and LLM automation with clear scope, timelines,
+        and acceptance criteria. Below is how I typically structure engagements.
+      </Typography>
+
+      <h3>Offer Structure</h3>
+      <ul>
+        <li>
+          <strong>Build (Fixed)</strong> — Most projects start with <strong>Discovery (2–4 weeks, $7.5k–$15k)</strong> to de-risk scope, success metrics,
+          and timeline. Discovery is followed by scoped delivery phases that <strong>typically start at $20k-$30k</strong> for 4–8 weeks,
+          each with defined deliverables, acceptance criteria, and change control.
+        </li>
+        <li>
+          <strong>Co-Build (Monthly Retainer)</strong> — Ongoing product/feature work in partnership with your team.
+          Advisory + hands-on implementation at <strong>$200–$250/hr</strong> with a <strong>20-hour monthly minimum</strong>
+          (unused hours roll forward one month; overage billed at the same rate). Includes a shared backlog,
+          weekly status, and measurable milestones.
+        </li>
+        <li>
+          <strong>Build &amp; Scale (Risk-Bearing Program)</strong> — For new, enterprise-level systems:
+          <strong>you pay $0 until the solution is live in production, passes agreed acceptance tests, and you’re satisfied.</strong>
+          After acceptance, we move to a predictable monthly fee (<strong>from $10k up to $25k+/month</strong>, depending on throughput/SLAs) as the system is monitored, scaled, and extended.
+          <details>
+            <summary>What kinds of builds qualify?</summary>
+            <Typography>
+              New enterprise-level systems or automation of proven manual processes where the business outcome is clear but the technology is new—
+              e.g., replacing time-intensive, manual tasks with a custom, AI-assisted platform, then scaling
+              beyond current manual throughput. <br/><br/>In these cases, we can design, develop, scale, monitor, and operate the system,
+              including train and deploy any custom AI models or integrate with existing generative models as needed. 
+            </Typography>
+          </details>
+        </li>
+      </ul>
+
+      <h3>Typical Budgets &amp; Timelines</h3>
+      <ul>
+        <li><strong>Hourly retainers:</strong> <strong>$200–$250/hr</strong>, <strong>20-hour monthly minimum</strong> (rollover one month).</li>
+        <li><strong>Discovery:</strong> <strong>$7.5k–$15k</strong> (2–4 weeks).</li>
+        <li><strong>Scoped delivery phases:</strong> most start at <strong>$30k+</strong> (4–8 weeks) with clear deliverables and acceptance criteria.</li>
+        <li><strong>Build &amp; Scale:</strong> post-acceptance managed program that starts at <strong>$10k</strong>
+         per month and has reached over <strong>$25k/month</strong> at scale.</li>
+        <li><em>Final pricing follows a short discovery to lock scope and NTE.</em></li>
+      </ul>
+
+      <h3>Scope, Acceptance &amp; Change Control</h3>
+      <ul>
+        <li>Every fixed-fee phase includes an Statement of Work (SOW) with deliverables, acceptance criteria, and a clear change-control path.</li>
+        <li>Weekly status, shared backlog, and milestone reviews keep progress visible and decisions quick.</li>
+      </ul>
+
+      <h3>Payment Terms</h3>
+      <ul>
+        <li>Standard <strong>Net-30</strong>; deposits for fixed-fee; invoicing monthly or at milestones.</li>
+        <li><strong>Build &amp; Scale:</strong> no fee until acceptance; monthly fee begins after the agreed acceptance tests are met.</li>
+      </ul>
+
+      <h3>SLAs &amp; Availability</h3>
+      <ul>
+        <li>Defined in the SOW when needed, with documented response windows and escalation paths.</li>
+      </ul>
+
+      <h3>Procurement-Ready</h3>
+      <ul>
+        <li><strong>Entity:</strong> IterLoop <em>(Crutchfield Efficiency Solutions, LLC)</em></li>
+        <li><strong>Contracts:</strong> Master Services Agreement (MSA), SOW, Data Processing Addendum (DPA)/Business Associate Agreement (BAA) (as applicable)</li>
+        <li><strong>Insurance:</strong> General Liability / Professional Liability / Technology Errors &amp; Omissions; security questionnaires completed regularly</li>
+      </ul>
+
+      <h3>IP &amp; Confidentiality</h3>
+      <ul>
+        <li>
+          <strong>Build and Co-Build:</strong> The <strong>client owns the IP</strong> for deliverables created during the engagement.
+        </li>
+        <li>
+          <strong>Build &amp; Scale (risk-bearing) projects:</strong> While we carry development risk, we <strong>retain IP</strong>.
+          Upon acceptance and initial payment, you receive a <strong>broad, perpetual license</strong> to use and extend the solution.
+          If client-owned IP is preferred, we can structure a buyout or alternate pricing.
+        </li>
+        <li><strong>NDA:</strong> Available on request.</li>
+      </ul>
+
+      <h3>FAQ</h3>
+      <ul>
+        <li><strong>Fixed price?</strong> Yes—after a short discovery, with NTE and milestones.</li>
+        <li><strong>Docs &amp; onboarding?</strong> Yes—runbooks, handover sessions, admin guides by default.</li>
+        <li><strong>Onsite?</strong> Remote-first; onsite by arrangement.</li>
+        <li><strong>Prime or sub?</strong> Available as prime contractor or specialized subcontractor.</li>
+      </ul>
+    </section>
+
+  </MDXClient>
+</Prose>
