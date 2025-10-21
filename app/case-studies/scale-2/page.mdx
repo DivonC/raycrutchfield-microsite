@@ -1,0 +1,52 @@
+export const metadata = {
+  title: 'Case Study: 2M/mo scale & 40% AWS cost reduction',
+  description: 'Serverless data platform with LLM validation. Results, architecture, stack.'
+};
+
+import Image from 'next/image';
+import { Button, Stack, Box } from '@mui/material';
+import { capture } from '@/lib/track';
+
+# 2M/mo Scale & 40% AWS Cost Reduction
+
+**Role:** Lead Software Developer / Solutions Architect  
+**Open to:** FTE or Contract · US Remote · Immediate Start
+
+<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+  <Button variant="contained" href="/assets/case-studies/ray-2m-40pct.pdf" target="_blank"
+    onClick={() => capture('cs_pdf_download', { page: 'case-study' })}>
+    Download PDF
+  </Button>
+  <Button variant="outlined" href="https://calendly.com/YOUR_HANDLE/15min" target="_blank"
+    onClick={() => capture('book_call_click', { page: 'case-study' })}>
+    Book 15-min Call
+  </Button>
+</Stack>
+
+## Problem
+Manual QA, rising AWS spend, and throughput constraints slowed lead flow.
+
+## Approach
+- Event-driven **serverless** architecture on AWS (Lambda, API Gateway, Step Functions, SQS, DynamoDB/Aurora, S3).
+- **IaC** with CDK/Pulumi and CI/CD (GitHub Actions); observability via CloudWatch + Sentry.
+- **LLM data validation & text→JSON** extraction with guardrails and schema checks.
+- Real-time BI with QuickSight; nightly model retraining (PyTorch/sklearn).
+
+## Results (Quantified)
+- Scaled outreach from ~100k → **2M prospects/month**; **+112%** appointments.
+- **40% AWS cost reduction** via right-sizing & architecture changes.
+
+## Architecture (Thumbnail)
+<Box sx={{ my: 2, border: '1px solid', borderColor: 'divider', borderRadius: 2, p: 1 }}>
+  <Image src="/assets/case-studies/2m-architecture.v1.svg" alt="High-level serverless architecture"
+    width={1200} height={675} priority onClick={() => capture('cs_arch_view')} />
+</Box>
+
+[View full-size SVG](/assets/case-studies/2m-architecture.v1.svg){target="_blank"}  
+*(Sanitized, representative architecture.)*
+
+## Tech Stack
+AWS: Lambda, API Gateway, Step Functions, SQS/SNS, DynamoDB, Aurora/RDS, S3, CloudWatch  
+Data/ML: Postgres, ETL/ELT, QuickSight, PyTorch, scikit-learn  
+Dev: Node.js/TypeScript, Python (FastAPI), Docker, CI/CD (GitHub Actions)  
+AI/LLM: OpenAI/ChatGPT, guardrails, function calling, schema validation

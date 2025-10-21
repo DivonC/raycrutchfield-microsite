@@ -1,0 +1,92 @@
+export const metadata = {
+  title: 'Case Study: 2M/mo scale & 40% AWS cost reduction',
+  description: 'Serverless data platform with LLM validation. Results, architecture, stack.'
+};
+
+import Image from 'next/image';
+import { Box, Container, Stack, Typography, Chip, Link as MLink } from '@mui/material';
+import TrackedButton from '@/components/TrackedButton';
+import Prose from '@/components/Prose';
+import MDXClient from '@/components/MDXClient';
+
+<Box component="section" sx={{ bgcolor: 'grey.50', borderBottom: '1px solid', borderColor: 'divider' }}>
+  <Container maxWidth="md" sx={{ py: { xs: 4, sm: 6 } }}>
+    <Stack spacing={2} alignItems="center" textAlign="center" sx={{ mx: 'auto', maxWidth: 760 }}>
+      <Typography variant="overline" color="text.secondary">Case Study</Typography>
+
+      <Typography variant="h4" fontWeight={700}>
+        2M/mo Scale & 40% AWS Cost Reduction
+      </Typography>
+
+      <Typography color="text.secondary">
+        How a serverless data platform and LLM validation pipeline unlocked higher throughput, better data quality, and lower cloud spend.
+      </Typography>
+
+      <Stack direction="row" spacing={1.25} useFlexGap flexWrap="wrap" justifyContent="center" sx={{ mt: 0.5, mb:3 }}>
+        <Chip size="small" label="Role: Lead Software Developer / Solutions Architect" />
+        <Chip size="small" label="Open to: FTE or Contract" />
+        <Chip size="small" label="US Remote • Immediate Start" />
+      </Stack>
+
+      <Box sx={{ height: { xs: 14, sm: 22 } }} />
+
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2.5} justifyContent="center" sx={{ mt: 15 }}>
+        <TrackedButton variant="contained" href="/assets/case-studies/ray-2m-40pct.pdf" target="_blank"
+          event="cs_pdf_download" eventProps={{ page: 'case-study' }} sx={{ minWidth: 220, mt: 5 }}>
+          Download 1-Page PDF
+        </TrackedButton>
+
+        <TrackedButton variant="outlined" href="https://calendly.com/raycrutchfield/15min" target="_blank"
+          event="book_call_click" eventProps={{ page: 'case-study' }} sx={{ minWidth: 220, mt: 5 }}>
+          Book 15-min Call
+        </TrackedButton>
+      </Stack>
+    </Stack>
+  </Container>
+</Box>
+
+
+<Prose>
+  <MDXClient>
+
+## Problem
+Manual QA, rising AWS spend, and throughput constraints slowed lead flow.
+
+## Approach
+- Event-driven **serverless** architecture on AWS (Lambda, API Gateway, Step Functions, SQS, DynamoDB/Aurora, S3).
+- **IaC** with CDK/Pulumi and CI/CD (GitHub Actions); observability via CloudWatch + Sentry.
+- **LLM data validation & text→JSON** extraction with guardrails and schema checks.
+- Real-time BI with QuickSight; nightly model retraining (PyTorch/sklearn).
+
+## Results (Quantified)
+- Scaled outreach from ~100k → **2M prospects/month**; **+112%** appointments.
+- **40% AWS cost reduction** via right-sizing & architecture changes.
+- Faster lead flow; automated QA replaced manual bottlenecks.
+
+## Architecture (Thumbnail)
+<Box sx={{ my: 2, border: '1px solid', borderColor: 'divider', borderRadius: 2, p: 1 }}>
+  <Image
+    src="/assets/case-studies/2m-architecture.v1.svg"
+    alt="High-level serverless architecture"
+    width={1200}
+    height={675}
+    priority
+  />
+</Box>
+
+<MLink href="/assets/case-studies/2m-architecture.v1.svg" target="_blank" rel="noopener">
+  View full-size SVG
+</MLink>
+<br />
+<Typography variant="caption" color="text.secondary">
+  (Sanitized, representative architecture.)
+</Typography>
+
+## Tech Stack
+AWS: Lambda, API Gateway, Step Functions, SQS/SNS, DynamoDB, Aurora/RDS, S3, CloudWatch  
+Data/ML: Postgres, ETL/ELT, QuickSight, PyTorch, scikit-learn  
+Dev: Node.js/TypeScript, Python (FastAPI), Docker, CI/CD (GitHub Actions)  
+AI/LLM: OpenAI/ChatGPT, guardrails, function calling, schema validation
+
+  </MDXClient>
+</Prose>
