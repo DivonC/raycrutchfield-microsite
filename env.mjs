@@ -16,6 +16,9 @@ export const env = createEnv({
     POSTHOG_KEY: z.string(),
     POSTHOG_API_HOST:z.string(),
     IN_CLOUD: z.string().optional(),
+    CONTACT_TO: z.email(),
+    CONTACT_FROM_EMAIL: z.email(),
+    CONTACT_FROM_NAME: z.string(),
     
   },
 
@@ -47,6 +50,9 @@ export const env = createEnv({
     AWS_REGION: process.env.AWS_REGION || 'us-east-2',
     IN_CLOUD: process.env.IN_CLOUD,
     FRONTEND_SECRET_NAME: process.env.FRONTEND_SECRET_NAME,
+    CONTACT_TO: process.env.CONTACT_TO || 'ray@iterloop.com',
+    CONTACT_FROM_EMAIL: process.env.CONTACT_FROM_EMAIL || 'ray@raycrutchfield.com', // verified sender sender
+    CONTACT_FROM_NAME: process.env.CONTACT_FROM_NAME || 'Contact Form Submission', 
 
     NEXT_PUBLIC_VERSION: process.env.NEXT_PUBLIC_VERSION,
     NEXT_PUBLIC_WEBSITE_URL: process.env.NEXT_PUBLIC_WEBSITE_URL || 'http://localhost:3000',

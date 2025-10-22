@@ -4,6 +4,10 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;      // Disable static generation for this route
 import { NextResponse, NextRequest } from 'next/server';
 import { get_secret_config } from '@/server/utilities/load_server_env_variables';
+import { env } from "@/env.mjs";
+import { PostHog } from 'posthog-node'
+import { postHogServerCapture } from '@/lib/capture.server';
+import { send_basic_email } from '@/server/utilities/email_service';
 export const runtime = 'nodejs'; // ensure Node (SendGrid needs it)
 
 
@@ -28,9 +32,18 @@ function isEmail(s: string) {
 }
 
 async function sendWithSendGrid(payload: Payload) {
-  const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY!;
-  const TO = process.env.CONTACT_TO!;
-  const FROM = process.env.CONTACT_FROM!; // verified sender
+  const SENDGRID_API_KEY = env.SENDGRID_API_KEY!;
+  const TO = env.CONTACT_TO!;
+  const FROM = env.CONTACT_FROM!; // verified sender
+
+  console.log(JSON.stringify({
+    action: 'send_contact_email',
+    to: TO,
+    from: FROM,
+    name: payload.name,
+    email: payload.email,
+    key: secretConfig.SENDGRID_API_KEY,
+  }))
 
   const subject = `Contact form: ${payload.purpose || 'General inquiry'} — ${payload.name}`;
 
@@ -46,27 +59,41 @@ async function sendWithSendGrid(payload: Payload) {
   ].join('\n');
 
   // Simple SendGrid REST call (no sdk)
-  const res = await fetch('https://api.sendgrid.com/v3/mail/send', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${secretConfig.SENDGRID_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      personalizations: [{ to: [{ email: TO }] }],
-      from: { email: FROM, name: 'Website Contact' },
-      reply_to: { email: payload.email, name: payload.name },
-      subject,
-      content: [
-        { type: 'text/plain', value: textLines },
-      ],
-    }),
-  });
+//   const res = await fetch('https://api.sendgrid.com/v3/mail/send', {
+//     method: 'POST',
+//     headers: {
+//       Authorization: `Bearer ${secretConfig.SENDGRID_API_KEY}`,
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       personalizations: [{ to: [{ email: TO }] }],
+//       from: { email: FROM, name: 'Website Contact' },
+//       reply_to: { email: payload.email, name: payload.name },
+//       subject,
+//       content: [
+//         { type: 'text/plain', value: textLines },
+//       ],
+//     }),
+//   });
 
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    throw new Error(`SendGrid error ${res.status}: ${body}`);
-  }
+//   if (!res.ok) {
+//     const body = await res.text().catch(() => '');
+//     throw new Error(`SendGrid error ${res.status}: ${body}`);
+//   }
+  await send_basic_email(
+    subject,
+    textLines,
+    'd-d4762ca7a9c4470089f42b3bf828d129',
+  )
+  await postHogServerCapture(
+    payload.email,
+    `contact_form_submitted`,
+    {
+        email: payload.email,
+        // utm_source: body.utm_source,
+        // utm_campaign: body.utm_campaign,
+    },
+  )
 }
 
 export async function POST(req: NextRequest) {

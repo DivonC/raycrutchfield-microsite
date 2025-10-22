@@ -5,9 +5,15 @@ export async function generateStaticParams() {
   const posts = await getAllPosts();
   return posts.map(p => ({ slug: p.frontmatter.slug }));
 }
+type Props = {
+    params: Promise<{ slug: string }>;
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const post = await getPostBySlug(params.slug);
+  };
+export default async function PostPage({ params }: Props) {
+    const { slug } = await params;
+
+  const post = await getPostBySlug(slug);
   if (!post) return null;
   const fm = post.frontmatter;
 

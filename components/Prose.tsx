@@ -7,6 +7,12 @@ export default function Prose({ children }: { children: React.ReactNode }) {
     <Container maxWidth="md" sx={{ pt: { xs: 4, sm: 6 }, pb: { xs: 8, sm: 10 } }}>
       <Box
         sx={{
+            fontFamily: [
+                '"Roboto"',
+                '"Helvetica Neue"',
+                'Arial',
+                'sans-serif',
+              ].join(','),
           // Vertical rhythm
           '& h1, & h2, & h3': { fontWeight: 700, mt: 3, mb: 2 },
           '& h4, & h5, & h6': { fontWeight: 700, mt: 3, mb: 1.5 },

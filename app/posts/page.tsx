@@ -4,8 +4,15 @@ import { getAllPosts, paginate } from '@/lib/content';
 
 const PAGE_SIZE = 10;
 
-export default async function PostsIndex({ searchParams }: { searchParams?: { page?: string } }) {
-    let pageItem = await searchParams?.page || '1';
+type Props = {
+    params: Promise<{ slug: string }>;
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+
+  };
+
+export default async function PostsIndex({ searchParams }: Props) {
+    const awaitedSearchParams = await searchParams;
+    let pageItem = awaitedSearchParams?.page || '1';
   const page = Number(pageItem) || 1;
   const posts = await getAllPosts();
   const { items, pages } = paginate(posts, page, PAGE_SIZE);

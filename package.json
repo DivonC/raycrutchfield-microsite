@@ -15,15 +15,17 @@
     "@mui/material": "^7.3.4",
     "@sendgrid/mail": "^8.1.6",
     "@t3-oss/env-nextjs": "^0.13.8",
+    "formik": "^2.4.6",
     "globby": "^15.0.0",
     "gray-matter": "^4.0.3",
     "next": "^15.5.6",
     "next-mdx-remote": "^5.0.0",
-    "posthog-js": "^1.279.0",
+    "posthog-js": "^1.278.0",
     "posthog-node": "^5.10.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "zod": "^4.1.12"
+    "zod": "^4.1.12",
+    "zod-formik-adapter": "^2.0.0"
   },
   "devDependencies": {
     "@mdx-js/loader": "^3.1.1",

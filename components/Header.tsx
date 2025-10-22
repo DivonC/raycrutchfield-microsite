@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { capture } from '@/lib/track';
+import TrackedButton from './TrackedButton';
 
 type NavLink = { label: string; href: string; external?: boolean; cta?: boolean };
 
@@ -97,18 +98,19 @@ export default function Header() {
               }}
             >
               {NAV_LINKS.map((item) => (
-                <Button
-                  key={item.href}
-                  component={Link}
-                  href={item.href}
-                  onClick={() => handleNavClick(item.href, item.label)}
-                  color={isActive(item.href) ? 'primary' : 'inherit'}
-                  variant={isActive(item.href) ? 'outlined' : 'text'}
-                  sx={{ textTransform: 'none', fontWeight: 600 }}
-                >
-                  {item.label}
-                </Button>
-              ))}
+  <TrackedButton
+    key={item.href}
+    asLink={true}
+    href={item.href}
+    event="headernav_button_click"
+    eventProps={{ href: item.href, label: item.label }}
+    color={isActive(item.href) ? 'primary' : 'inherit'}
+    variant={isActive(item.href) ? 'outlined' : 'text'}
+    sx={{ textTransform: 'none', fontWeight: 600 }}
+  >
+    {item.label}
+  </TrackedButton>
+))}
             </Box>
 
             {/* Desktop CTA (right) */}
@@ -130,42 +132,65 @@ export default function Header() {
       </AppBar>
 
       {/* Mobile drawer */}
-      <Drawer anchor="left" open={open} onClose={() => setOpen(false)} PaperProps={{ sx: { width: 300 } }}>
-        <Box sx={{ p: 2 }}>
-          <Typography variant="h6" fontWeight={800}>Ray Crutchfield</Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lead Software Developer / Solutions Architect
-          </Typography>
-        </Box>
-        <Divider />
-        <List sx={{ py: 0 }}>
-          {NAV_LINKS.map((item) => (
-            <ListItemButton
-              key={item.href}
-              component={Link as any}
-              href={item.href}
-              selected={isActive(item.href)}
-              onClick={() => handleNavClick(item.href, item.label)}
-            >
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          ))}
-        </List>
-        <Box sx={{ p: 2 }}>
-          <Button
-            fullWidth
-            component={Link}
-            href={CTA_LINK.href}
-            target="_blank"
-            rel="noopener"
-            variant="contained"
-            onClick={() => handleNavClick(CTA_LINK.href, CTA_LINK.label, true)}
-            sx={{ textTransform: 'none', fontWeight: 700, borderRadius: 2 }}
-          >
-            {CTA_LINK.label}
-          </Button>
-        </Box>
-      </Drawer>
+      <Drawer
+  anchor="left"
+  open={open}
+  onClose={() => setOpen(false)}
+  PaperProps={{ sx: { width: 300 } }}
+>
+  <Box sx={{ p: 2 }}>
+    <Typography variant="h6" fontWeight={800}>
+      Ray Crutchfield
+    </Typography>
+    <Typography variant="body2" color="text.secondary">
+      Lead Software Developer / Solutions Architect
+    </Typography>
+  </Box>
+  <Divider />
+  <List sx={{ py: 0 }}>
+    {NAV_LINKS.map((item) => (
+      <TrackedButton
+        key={item.href}
+        asLink={true}
+        href={item.href}
+        event="sidenav_button_click"
+        eventProps={{ href: item.href, label: item.label }}
+        component={ListItemButton}
+        //@ts-ignore
+        selected={isActive(item.href)}
+        sx={{
+          width: '100%',           // full width of drawer
+          justifyContent: 'flex-start',
+          textAlign: 'left',
+          py: 1.5,                 // vertical padding
+          px: 2,                   // horizontal padding
+        }}
+      >
+        <ListItemText primary={item.label} />
+      </TrackedButton>
+    ))}
+  </List>
+  <Box sx={{ p: 2 }}>
+    <Button
+      fullWidth
+      component={Link}
+      href={CTA_LINK.href}
+      target="_blank"
+      rel="noopener"
+      variant="contained"
+      onClick={() => handleNavClick(CTA_LINK.href, CTA_LINK.label, true)}
+      sx={{
+        textTransform: 'none',
+        fontWeight: 700,
+        borderRadius: 2,
+        mt: 1,                   // space from above list
+      }}
+    >
+      {CTA_LINK.label}
+    </Button>
+  </Box>
+</Drawer>
+
     </>
   );
 }

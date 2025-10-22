@@ -1,4 +1,5 @@
 
+'use client';
 import posthog from 'posthog-js';
 
 export function capture(name: string, props?: Record<string, any>) {

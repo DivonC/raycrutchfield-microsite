@@ -8,6 +8,8 @@ import DownloadIcon from '@mui/icons-material/Download';
 import PrintIcon from '@mui/icons-material/Print';
 import Link from 'next/link';
 import Head from 'next/head';
+import { capture } from '@/lib/track';
+
 
 export default function ResumePage() {
   return (
@@ -46,6 +48,9 @@ export default function ResumePage() {
               prefetch={false}
               variant="contained"
               startIcon={<DownloadIcon />}
+              onClick={() => {
+                capture('download_pdf_clicked', { format: 'pdf', source: 'resume_section' });
+              }}
             >
               Download PDF
             </Button>
@@ -55,10 +60,19 @@ export default function ResumePage() {
               prefetch={false}
               variant="outlined"
               startIcon={<DownloadIcon />}
+              onClick={() => {
+                capture('download_docx_clicked', { format: 'docx', source: 'resume_section' });
+              }}
             >
               DOCX
             </Button>
-            <Button variant="text" startIcon={<PrintIcon />} onClick={() => window.print()}>
+            <Button variant="text" startIcon={<PrintIcon />}
+             onClick={() => {
+                capture('print_button_clicked', { source: 'resume_section' });
+                window.print();
+              }}
+             
+             >
               Print
             </Button>
           </Stack>
@@ -71,8 +85,20 @@ export default function ResumePage() {
 
         {/* Contact */}
         <Typography sx={{ mb: 3 }}>
-          Memphis, TN • <MUILink href="tel:+16156698371">615-669-8371</MUILink> • <MUILink href="mailto:ray@iterloop.com">ray@iterloop.com</MUILink> •{' '}
-          <MUILink href="https://www.linkedin.com/in/d-ray-crutchfield-cpa-925b77ab/" target="_blank" rel="noopener">linkedin.com/in/d-ray-crutchfield-cpa-925b77ab/</MUILink>
+          Memphis, TN • <MUILink href="tel:+16156698371"
+            onClick={() => {
+                capture('phone_button_clicked', { source: 'resume_page' });
+              }}
+          >615-669-8371</MUILink> • 
+          <MUILink href="mailto:ray@iterloop.com"
+            onClick={() => {
+                capture('email_button_clicked', { source: 'resume_page' });
+              }}
+          >ray@iterloop.com</MUILink> •{' '}
+          <MUILink href="https://www.linkedin.com/in/d-ray-crutchfield-cpa-925b77ab/" target="_blank" rel="noopener"
+              onClick={() => capture('linked_in_profile_click', { url: 'https://www.linkedin.com/in/d-ray-crutchfield-cpa-925b77ab/' })}
+
+          >linkedin.com/in/d-ray-crutchfield-cpa-925b77ab/</MUILink>
         </Typography>
 
         <Divider sx={{ my: 2 }} />

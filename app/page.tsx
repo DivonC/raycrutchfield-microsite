@@ -1,6 +1,5 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
-import PostsTeaser from '@/components/PostsTeaser';
 import TrackedButton from '@/components/TrackedButton';
 
 export default function Home() {
@@ -55,11 +54,22 @@ export default function Home() {
         </TrackedButton>
       </Stack>
 
-      <Stack direction="row" spacing={4} sx={{ mt: 1.5, rowGap: 1 }} useFlexGap flexWrap="wrap"> {/* added mt + wrap gap */}
-        <Metric label="2M/mo scale" />
-        <Metric label="40% AWS cost ↓" />
-        <Metric label="+112% appts" />
-      </Stack>
+      <Stack
+  direction={{ xs: 'column', sm: 'row' }}
+  spacing={{ xs: 2, sm: 4 }}            /* less spacing on mobile, more on desktop */
+  useFlexGap
+  flexWrap="wrap"
+  sx={{
+    mt: { xs: 1, sm: 1.5 },
+    rowGap: { xs: 0.8, sm: 1 },
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}
+>
+  <Metric label="2M/mo scale" />
+  <Metric label="40% AWS cost ↓" />
+  <Metric label="+112% appts" />
+</Stack>
 
       <Box sx={{ mt: 1.5 }}> {/* added mt */}
         {/* <Button ...>Download 1-Pager (PDF)</Button> */}

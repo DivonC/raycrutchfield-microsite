@@ -6,13 +6,26 @@
       "dom.iterable",
       "es2022"
     ],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "noUncheckedIndexedAccess": false,
+    "moduleDetection": "force",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+"checkJs": true,
+"strictNullChecks": true,
+"typeRoots": [
+      "../node_modules/@types",
+      "../@types",
+      "./types"
+    ],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -30,6 +43,8 @@
     ]
   },
   "include": [
+    "next.config.mjs",
+    ".next/types/**/*.ts",
     "env.mjs",
     "**/*.mdx",
     "**/*.ts",
@@ -38,6 +53,8 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "coverage",
+    "node_modules",
+    "public"
   ]
 }

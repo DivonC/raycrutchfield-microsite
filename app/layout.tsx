@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import Providers from './providers';
 import Header from '@/components/Header';
 
 
@@ -22,10 +21,13 @@ export const metadata = {
 /* eslint-disable react/prop-types */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <>
-    <Providers>
+    <html lang="en">
+    <body>
+    {/* <Providers> */}
       <Header />
 
       {children}
-    </Providers></>);
+    {/* </Providers> */}
+    </body>
+    </html>);
 }
