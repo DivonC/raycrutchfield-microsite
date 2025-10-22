@@ -17,8 +17,7 @@ type Payload = {
   name: string;
   email: string;
   company?: string;
-  purpose?: string;
-  budget?: string;
+  //purpose?: string;
   message: string;
   _gotcha?: string;
 };
@@ -45,14 +44,14 @@ async function sendWithSendGrid(payload: Payload) {
     key: secretConfig.SENDGRID_API_KEY,
   }))
 
-  const subject = `Contact form: ${payload.purpose || 'General inquiry'} — ${payload.name}`;
+  const subject = `Contact form: ${ 'General inquiry'} — ${payload.name}`;
 
   const textLines = [
     `Name: ${payload.name}`,
     `Email: ${payload.email}`,
     `Company: ${payload.company || '-'}`,
-    `Purpose: ${payload.purpose || '-'}`,
-    `Budget: ${payload.budget || '-'}`,
+    //`Purpose: ${payload.purpose || '-'}`,
+    //`Budget: ${payload.budget || '-'}`,
     '',
     'Message:',
     payload.message,
@@ -107,8 +106,8 @@ export async function POST(req: NextRequest) {
         name: sanitize(j.name),
         email: sanitize(j.email),
         company: sanitize(j.company),
-        purpose: sanitize(j.purpose),
-        budget: sanitize(j.budget),
+        //purpose: sanitize(j.purpose),
+        // budget: sanitize(j.budget),
         message: sanitize(j.message),
         _gotcha: sanitize(j._gotcha),
       };
@@ -118,8 +117,8 @@ export async function POST(req: NextRequest) {
         name: sanitize(form.get('name') as string),
         email: sanitize(form.get('email') as string),
         company: sanitize(form.get('company') as string),
-        purpose: sanitize(form.get('purpose') as string),
-        budget: sanitize(form.get('budget') as string),
+        //purpose: sanitize(form.get('purpose') as string),
+        // budget: sanitize(form.get('budget') as string),
         message: sanitize(form.get('message') as string),
         _gotcha: sanitize(form.get('_gotcha') as string),
       };

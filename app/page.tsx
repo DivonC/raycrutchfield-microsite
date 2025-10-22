@@ -80,7 +80,7 @@ export default function Home() {
           event="cs_pdf_download"
           eventProps={{ page: 'home' }}
         >
-          Download 1-Pager (PDF)
+          Download 2-Pager (PDF)
         </TrackedButton>
       </Box>
 

@@ -13,8 +13,8 @@ const contactSchema = z.object({
     name: z.string().min(1, { message: 'Name is required' }),
     email: z.email({ message: 'Invalid email address' }),
     company: z.string().optional(),
-    purpose: z.string().optional(),
-    budget: z.string().optional(),
+    //purpose: z.string().optional(),
+    // budget: z.string().optional(),
     message: z.string().min(1, { message: 'Message is required' }),
     _gotcha: z.string().max(0, { message: 'Spam field must be empty' }).optional(),
   });
@@ -25,8 +25,8 @@ const contactSchema = z.object({
     name: '',
     email: '',
     company: '',
-    purpose: '',
-    budget: '',
+    //purpose: '',
+    // budget: '',
     message: '',
     _gotcha: '',
   };
@@ -110,7 +110,7 @@ const contactSchema = z.object({
                     helperText={touched.company && errors.company}
                   />
   
-                  <TextField
+                  {/* <TextField
                     name="purpose"
                     label="Purpose"
                     placeholder="Discovery"
@@ -120,9 +120,9 @@ const contactSchema = z.object({
                     onBlur={handleBlur}
                     error={Boolean(touched.purpose && errors.purpose)}
                     helperText={touched.purpose && errors.purpose}
-                  />
+                  /> */}
   
-                  <TextField
+                  {/* <TextField
                     name="budget"
                     label="Rough budget"
                     placeholder="$10–30k"
@@ -132,11 +132,11 @@ const contactSchema = z.object({
                     onBlur={handleBlur}
                     error={Boolean(touched.budget && errors.budget)}
                     helperText={touched.budget && errors.budget}
-                  />
+                  /> */}
   
                   <TextField
                     name="message"
-                    label="What are you trying to do?"
+                    label="Message"
                     multiline
                     rows={4}
                     fullWidth

@@ -39,44 +39,105 @@ export default function ResumePage() {
 
       <Container maxWidth="md" sx={{ py: { xs: 3, md: 6 } }}>
         {/* Header */}
-        <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2} sx={{ mb: 2 }}>
-          <Typography variant="h3" component="h1">Ray Crutchfield</Typography>
-          <Stack direction="row" spacing={1} sx={{ '@media print': { display: 'none' } }}>
-            <Button
-              component={Link}
-              href="/resume/Ray-Crutchfield-Resume.pdf"
-              prefetch={false}
-              variant="contained"
-              startIcon={<DownloadIcon />}
-              onClick={() => {
-                capture('download_pdf_clicked', { format: 'pdf', source: 'resume_section' });
-              }}
-            >
-              Download PDF
-            </Button>
-            <Button
-              component={Link}
-              href="/resume/Ray-Crutchfield-Resume.docx"
-              prefetch={false}
-              variant="outlined"
-              startIcon={<DownloadIcon />}
-              onClick={() => {
-                capture('download_docx_clicked', { format: 'docx', source: 'resume_section' });
-              }}
-            >
-              DOCX
-            </Button>
-            <Button variant="text" startIcon={<PrintIcon />}
-             onClick={() => {
-                capture('print_button_clicked', { source: 'resume_section' });
-                window.print();
-              }}
-             
-             >
-              Print
-            </Button>
-          </Stack>
-        </Stack>
+        <Stack
+  direction={{ xs: 'column', sm: 'row' }}
+  justifyContent="space-between"
+  alignItems={{ xs: 'flex-start', sm: 'center' }}
+  spacing={2}
+  sx={{ mb: 2 }}
+>
+  <Typography variant="h3" component="h1">Ray Crutchfield</Typography>
+
+  <Grid
+    container
+    columnSpacing={1}
+    rowSpacing={{ xs: 1, sm: 0 }}
+    justifyContent={{ xs: 'center', sm: 'flex-start' }}
+    alignItems="center"
+    sx={{ '@media print': { display: 'none' } }}
+  >
+    {/* PDF */}
+    <Grid item xs={6} sm="auto" sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Button
+        component={Link}
+        href="/resume/Ray-Crutchfield-Resume.pdf"
+        prefetch={false}
+        variant="contained"
+        startIcon={<DownloadIcon />}
+        sx={(theme) => ({
+          minHeight: { xs: 56, sm: 40 },   // ⬅ unified height
+          px: { xs: 2, sm: 2.5 },
+          display: 'flex',
+          alignItems: 'center',
+          '& .MuiButton-startIcon': { mr: 1 },
+          // Large screens: one line
+          '& .textBlock': {
+            display: 'inline-flex',
+            flexDirection: 'row',
+            textAlign: 'left',
+            whiteSpace: 'nowrap',
+            lineHeight: 1,
+            gap: theme.spacing(1),
+            [theme.breakpoints.down('sm')]: {
+              // Small screens: two lines, centered
+              display: 'flex',
+              flexDirection: 'column',
+              textAlign: 'center',
+              whiteSpace: 'normal',
+              lineHeight: 1.2,
+              gap: 0,
+            },
+          },
+        })}
+        onClick={() => capture('download_pdf_clicked', { format: 'pdf', source: 'resume_section' })}
+      >
+        <span className="textBlock">
+          <span>Download</span>
+          <span>PDF</span>
+        </span>
+      </Button>
+    </Grid>
+
+    {/* DOCX */}
+    <Grid item xs={6} sm="auto" sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Button
+        component={Link}
+        href="/resume/Ray-Crutchfield-Resume.docx"
+        prefetch={false}
+        variant="outlined"
+        startIcon={<DownloadIcon />}
+        sx={{
+          minHeight: { xs: 56, sm: 40 },   // ⬅ same height
+          px: { xs: 2, sm: 2.5 },
+        }}
+        onClick={() => capture('download_docx_clicked', { format: 'docx', source: 'resume_section' })}
+      >
+        DOCX
+      </Button>
+    </Grid>
+
+    {/* PRINT */}
+    <Grid item xs={12} sm="auto" sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
+      <Button
+        variant="text"
+        startIcon={<PrintIcon />}
+        sx={{
+          minHeight: { xs: 56, sm: 40 },   // ⬅ same height
+          px: { xs: 2, sm: 2.5 },
+        }}
+        onClick={() => {
+          capture('print_button_clicked', { source: 'resume_section' });
+          window.print();
+        }}
+      >
+        Print
+      </Button>
+    </Grid>
+  </Grid>
+</Stack>
+
+
+
 
         {/* Subheadline */}
         <Typography variant="subtitle1" sx={{ mb: 1 }}>
