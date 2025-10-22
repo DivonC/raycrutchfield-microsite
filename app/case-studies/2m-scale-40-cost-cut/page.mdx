@@ -22,6 +22,7 @@ import MDXClient from '@/components/MDXClient';
 
       <Typography color="text.secondary">
         How a serverless data platform and LLM validation pipeline unlocked higher throughput, better data quality, and lower cloud spend.
+        Read the preview on this page or download the full case study below. 
       </Typography>
 
       <Stack direction="row" spacing={1.25} useFlexGap flexWrap="wrap" justifyContent="center" sx={{ mt: 0.5, mb:3 }}>
@@ -35,7 +36,7 @@ import MDXClient from '@/components/MDXClient';
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2.5} justifyContent="center" sx={{ mt: 15 }}>
         <TrackedButton variant="contained" href="/assets/case-studies/ray-2m-40pct.pdf" target="_blank"
           event="cs_pdf_download" eventProps={{ page: 'case-study' }} sx={{ minWidth: 220, mt: 5 }}>
-          Download 1-Page PDF
+          Download Full Case Study (2 pages)
         </TrackedButton>
 
         <TrackedButton variant="outlined" href="https://calendly.com/raycrutchfield/15min" target="_blank"
@@ -87,7 +88,7 @@ Manual QA, rising AWS spend, and throughput constraints slowed lead flow.
 ## Tech Stack
 AWS: Lambda, API Gateway, Step Functions, SQS/SNS, DynamoDB, Aurora/RDS, S3, CloudWatch  
 Data/ML: Postgres, ETL/ELT, QuickSight, PyTorch, scikit-learn  
-Dev: Node.js/TypeScript, Python (FastAPI), Docker, CI/CD (GitHub Actions)  
+Dev: Node.js/TypeScript, Python (FastAPI and for ML model creation / training), Docker, CI/CD (GitHub Actions)  
 AI/LLM: OpenAI/ChatGPT, guardrails, function calling, schema validation
 
   </MDXClient>
