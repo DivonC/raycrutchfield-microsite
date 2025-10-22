@@ -22,7 +22,7 @@ frontend:
         - npm ci --production=true
           
   artifacts:
-    baseDirectory: .next
+   # baseDirectory: .next
     files:
       - '**/*'
   cache:
