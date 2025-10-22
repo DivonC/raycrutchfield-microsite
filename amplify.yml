@@ -1,8 +1,4 @@
-version: 2
-env:
-  variables:
-    NODE_ENV: production
-    APP_ENV: prod
+version: 3
 frontend:
   phases:
     preBuild:
@@ -18,6 +14,7 @@ frontend:
         - env | grep -e SUPPORT_EMAIL_ADDRESS -e CUSTOM_EMAIL_TOKEN_ID -e API_FUNCTION_NAME | tee -a .env.production | grep . || echo "Some env vars not found - row 4"
         - env | grep -e NEXT_PUBLIC_ | tee -a .env.production | grep . || echo "Some env vars not found - row 5"
         - npm run build
+        - npm prune --omit=dev
         #- rm -rf node_modules
         #- npm ci --production=true
           

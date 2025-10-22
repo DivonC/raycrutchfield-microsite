@@ -10,9 +10,9 @@
     "@aws-sdk/client-secrets-manager": "^3.914.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mdx-js/mdx": "^3.1.1",
-    "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/mdx": "^3.1.1",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
     "@next/mdx": "^15.5.6",
@@ -33,12 +33,11 @@
     "zod-formik-adapter": "^2.0.0"
   },
   "devDependencies": {
-    
-    
+
     
     "@types/node": "^20.11.24",
     "@types/react": "^19.2.2",
-    
+
     "typescript": "5.9.3"
   }
 }
