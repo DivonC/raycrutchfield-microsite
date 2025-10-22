@@ -4,7 +4,7 @@ export const metadata = {
 };
 
 import Image from 'next/image';
-import { Box, Container, Stack, Typography, Chip, Link as MLink } from '@mui/material';
+import { Box, Container, Stack, Typography, Chip, Divider, Link as MLink } from '@mui/material';
 import TrackedButton from '@/components/TrackedButton';
 import Prose from '@/components/Prose';
 import MDXClient from '@/components/MDXClient';
@@ -22,7 +22,6 @@ import MDXClient from '@/components/MDXClient';
 
       <Typography color="text.secondary">
         How a serverless data platform and LLM validation pipeline unlocked higher throughput, better data quality, and lower cloud spend.
-        Read the preview on this page or download the full case study below. 
       </Typography>
 
       <Stack direction="row" spacing={1.25} useFlexGap flexWrap="wrap" justifyContent="center" sx={{ mt: 0.5, mb:3 }}>
@@ -59,7 +58,7 @@ Manual QA, rising AWS spend, and throughput constraints slowed lead flow.
 - Event-driven **serverless** architecture on AWS (Lambda, API Gateway, Step Functions, SQS, DynamoDB/Aurora, S3).
 - **IaC** with CDK/Pulumi and CI/CD (GitHub Actions); observability via CloudWatch + Sentry.
 - **LLM data validation & text→JSON** extraction with guardrails and schema checks.
-- Real-time BI with QuickSight; nightly model retraining (PyTorch/sklearn).
+- Real-time BI with QuickSight; nightly model retraining (PyTorch/scikit-learn).
 
 ## Results (Quantified)
 - Scaled outreach from ~100k → **2M prospects/month**; **+112%** appointments.
@@ -93,3 +92,35 @@ AI/LLM: OpenAI/ChatGPT, guardrails, function calling, schema validation
 
   </MDXClient>
 </Prose>
+
+<Box component="section" sx={{ bgcolor: 'grey.50', borderBottom: '1px solid', borderColor: 'divider' }}>
+  <Container maxWidth="md" sx={{ py: { xs: 4, sm: 6 } }}>
+    <Stack spacing={2} alignItems="center" textAlign="center" sx={{ mx: 'auto', maxWidth: 760 }}>
+
+      <Typography variant="h4" fontWeight={700}>
+        Want the full breakdown?
+      </Typography>
+
+      <Typography color="text.secondary">
+        This page is a concise preview. For additional details, download the full case study below.
+      </Typography>
+
+      <Box sx={{ height: { xs: 14, sm: 22 } }} />
+
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2.5} justifyContent="center" sx={{ mt: 15 }}>
+        <TrackedButton variant="contained" href="/assets/case-studies/ray-2m-40pct.pdf" target="_blank"
+          event="cs_pdf_download" eventProps={{ page: 'case-study' }} sx={{ minWidth: 220, mt: 5 }}>
+          Download Full Case Study (2 pages)
+        </TrackedButton>
+
+        <TrackedButton variant="outlined" href="https://calendly.com/raycrutchfield/15min" target="_blank"
+          event="book_call_click" eventProps={{ page: 'case-study' }} sx={{ minWidth: 220, mt: 5 }}>
+          Book 15-min Call
+        </TrackedButton>
+      </Stack>
+      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>
+    Sanitized; no client-identifying data.
+  </Typography>
+    </Stack>
+  </Container>
+</Box>

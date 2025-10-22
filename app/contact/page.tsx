@@ -100,7 +100,7 @@ const contactSchema = z.object({
   
                   <TextField
                     name="company"
-                    label="Company (optional)"
+                    label="Company"
                     autoComplete="organization"
                     fullWidth
                     value={values.company}
@@ -112,7 +112,7 @@ const contactSchema = z.object({
   
                   <TextField
                     name="purpose"
-                    label="Purpose (Discovery, Co-Build Retainer, Build & Scale, FTE)"
+                    label="Purpose"
                     placeholder="Discovery"
                     fullWidth
                     value={values.purpose}
@@ -124,7 +124,7 @@ const contactSchema = z.object({
   
                   <TextField
                     name="budget"
-                    label="Rough budget (<$10k, $10–30k, $30–75k, $75k+)"
+                    label="Rough budget"
                     placeholder="$10–30k"
                     fullWidth
                     value={values.budget}

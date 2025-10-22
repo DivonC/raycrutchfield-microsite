@@ -1,5 +1,5 @@
 import createMDX from '@next/mdx';
-await import('./env.mjs');
+import('./env.mjs');
 const withMDX = createMDX({ extension: /\.mdx?$/ });
 
 /** @type {import('next').NextConfig} */
