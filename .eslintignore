@@ -1,0 +1,11 @@
+src/models/models
+src\models\models
+amplify
+amplify/
+
+aws-cdk
+prisma
+amplify-codegen-temp/models/models
+**/node_modules/*
+node_modules/
+**/.next/*
