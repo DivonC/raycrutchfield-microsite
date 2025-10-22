@@ -8,8 +8,6 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    // DATABASE_URL: z.string().url(),
-    // DATABASE_REPLICA_URL: z.string().url(),
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     REGION: z.string().default('us-east-2'),
     AWS_REGION: z.string().default('us-east-2'),
@@ -19,9 +17,6 @@ export const env = createEnv({
     POSTHOG_API_HOST:z.string(),
     IN_CLOUD: z.string().optional(),
     
-
-    // DISCORD_CLIENT_ID: z.string(),
-    // DISCORD_CLIENT_SECRET: z.string(),
   },
 
   /**

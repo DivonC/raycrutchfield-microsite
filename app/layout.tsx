@@ -19,11 +19,13 @@ export const metadata = {
   twitter: { card: 'summary_large_image' },
 };
 
+/* eslint-disable react/prop-types */
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return (<html lang="en"><body>
+  return (
+    <>
     <Providers>
       <Header />
 
       {children}
-    </Providers></body></html>);
+    </Providers></>);
 }
