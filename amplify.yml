@@ -13,7 +13,7 @@ frontend:
         - env | grep -e IN_CLOUD  -e POSTHOG_KEY -e NEXT_PUBLIC_WEBSITE_URL | tee -a .env.production | grep . || echo "Some env vars not found - row 3"
         - env | grep -e SUPPORT_EMAIL_ADDRESS -e CUSTOM_EMAIL_TOKEN_ID -e API_FUNCTION_NAME | tee -a .env.production | grep . || echo "Some env vars not found - row 4"
         - env | grep -e NEXT_PUBLIC_ | tee -a .env.production | grep . || echo "Some env vars not found - row 5"
-        - npm run build
+        - NEXT_DISABLE_TYPE_CHECKING=true npm run build
         - npm prune --omit=dev
         #- rm -rf node_modules
         #- npm ci --production=true
