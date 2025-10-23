@@ -196,7 +196,7 @@ export default function ResumePage() {
             <Bullet>Developed ML models (PyTorch, scikit-learn) to identify decision-makers to support marketing efforts; implemented nightly retraining and feedback loop for continuous lift.</Bullet>
             <Bullet>Designed database and ETL to support large-scale operations and real-time BI with AWS QuickSight.</Bullet>
             <Bullet>Redesigned and automated a data collection process, increasing data volume by 18x by scaling from 3 manual workers to the equivalent of 54 through cloud-based automation.</Bullet>
-            <Bullet>Designed and managed end-to-end cloud infrastructure on AWS and Azure, including infrastructure as code, cost optimization, and system monitoring, ensuring high availability and performance for mission-critical systems.</Bullet>
+            <Bullet>Designed and managed end-to-end cloud infrastructure on AWS and Azure, including infrastructure as code, cost optimization, and system monitoring; defined service-level indicators (SLIs) and operational objectives (SLO-type thresholds) for volume and error-rate monitoring.</Bullet>
           </Job>
 
           <Job
